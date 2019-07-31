@@ -30,7 +30,7 @@
       <mdb-modal-body>
         <form class="mx-3 grey-text">
           <mdb-input
-     
+            v-validate="'min:2'"
             name="name"
             label="ご担当者様お名前"
             icon="smile"
@@ -40,7 +40,7 @@
           />
           <span class="alert alert-danger" v-show="errors.has('name')">{{ errors.first('name') }}</span>
           <mdb-input
-       
+            v-validate="'min:6'"
             name="company_name"
             label="会社名"
             icon="house-damage"
