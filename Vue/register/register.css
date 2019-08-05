@@ -1,0 +1,37 @@
+body {
+   background-size: cover;
+   margin-top: 3.7%;
+}
+
+*[role="form"] {
+   max-width: 700px;
+   padding: 15px;
+   margin: 0 auto;
+   border-radius: 0.3em;
+   background-color: #f2f2f2;
+}
+
+*[role="form"] h2 { 
+   font-family: 'Open Sans' , sans-serif;
+   font-size: 40px;
+   font-weight: 600;
+   color: gray;
+   margin-top: 5%;
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 4px;
+}
+.form-check {
+   padding-left: 45px;
+}
+.text-md-right {
+    padding-left: 10px;
+    float: left;
+}
+.red {
+   border: 2px solid red;
+   
+}
+.done {
+   background-color: rgb(232, 240, 254);
+}

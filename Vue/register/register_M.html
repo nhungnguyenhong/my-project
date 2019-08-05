@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+<style>
+    .example-container {
+        display: flex;
+        flex-direction: column;
+        border-radius: 0.3em;
+        background-color: #f2f2f2;
+        max-width: 700px;
+        height: 90%;
+        padding: 15px;
+        margin: auto auto auto 25%;
+    }
+    
+    .row .col .s3 {
+        width: 21;
+    }
+    
+    label {
+        font-size: 16px;
+        color: black;
+        margin-top: 10px;
+    }
+    
+    .example-container > * {
+        width: 100%;
+    }
+    
+    .mdc-button__label {
+        color: white;
+        background-color: green;
+        height: 40px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    button:hover {
+        border: 2px solid red;
+    }
+    input .col.done {
+        background-color: rgb(232, 240, 254);
+    }
+    .text-danger {
+        background-color: red;
+        color: black;
+    }
+    .button_return {
+        color:#0288d1; 
+        text-align:center; 
+        cursor: pointer;
+
+    }
+    
+</style>
+
+<body>
+    <form class="example-container" id="root" @submit='checkpass' method="post">
+        <span style="text-align:center; font-size: 18px" >ご登録画面</span>
+        <div class="row col s12">
+            <label for="name" class="col s3">ご担当者様お名前</label>
+            <input type="text" placeholder="風庭太郎" class="col s9" name="name" required>
+
+        </div>
+        <div class="row col s12">
+            <label for="name" class="col s3">会社名</label>
+            <input type="text" placeholder="会社名" class="col s9" name="company_name" required >
+
+        </div>
+        <div class="row col s12">
+            <label for="name" class="col s3">Email</label>
+            <input type="email" placeholder="admin@gmail.com" class="col s9" name="email" required>
+
+        </div>
+        <div class="row col s12">
+            <label for="password" class="col s3">パスワード</label>
+            <input type="password" v-model="password" :class="[password.length < 2? 'col s9 ' : 'input col s9 done']" placeholder="パスワード" required>
+        </div>
+
+        <div class="row col s12">
+            <label for="password2" class="col s3">パスワード（確認）</label>
+
+            <input type="password" v-model="password2" placeholder="パスワード（確認）" class="col s9" required> 
+            <span class="text-danger" v-text="checkpass.password2"></span>
+        </div>
+
+        <div class="row col s12">
+            <label for="post" class="col s3">会社郵便番号（ハイフンなし）</label>
+
+            <input type="text" v-model="post" placeholder="123456" class="col s9">
+        </div>
+
+        <div class="row col s12">
+            <label for="address" class="col s3">会社ご住所</label>
+
+            <input type="text" v-model="address" placeholder="例）東京都港区" class="col s9">
+
+        </div>
+        <div class="row col s12">
+            <label for="address2" class="col s3" style="margin-top: -4px">会社ご住所２</label>
+
+            <input type="address2" v-model="address2" placeholder="新橋5-26-8新橋加藤" class="col s9">
+
+        </div>
+        <div class="row col s12">
+            <label for="number" class="col s3">お電話番号 </label>
+
+            <input type="number" v-model="phonenumber" placeholder="03-6459-0300" class="col s9">
+        </div>
+
+        <div class="row col s12">
+            <p>
+                <label>
+                    <input type="checkbox" required/>
+                    <span><a style="color:#0288d1">利用規約</a>に同意の上、返信します。</span>
+                </label>
+            </p>
+        </div>
+        <div class="row col s12">
+            <button type="submit" class="col s12 mdc-button__label">登録する</button>
+            <div class="button_return ">ログイン画面へ戻る</div>
+        </div>
+    </form>
+</body>
+<script src="https://unpkg.com/vue@2.4.2" type="text/javascript"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#root',
+            data: {
+                name: '',
+                company_name: '',
+                email: '',
+                password: '',
+                password2: '',
+                post: '',
+                address: '',
+                address2: '',
+                phonenumber: ''
+
+            },
+            methods: {
+                checkpass: function(e) {
+                    if( this.password !== this.password2 ) {
+                        return ('mat khau khong trung khop');
+                   } else return ('Ok');
+                e.preventDefault();
+                }
+            }
+        });
+    </script>  
+
+</html>
