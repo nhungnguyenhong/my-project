@@ -106,4 +106,10 @@ class UserController extends Controller
         return response()
             ->json(['message' => 'Success: You have deleted the user']);
     }
+
+    public function search(Request $request) {
+        $users = User::where('name',$request->keyword)->get();
+        return response()
+        ->json($users);
+    }
 }

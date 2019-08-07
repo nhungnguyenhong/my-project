@@ -5,21 +5,14 @@
                 <h2>クラアント一覧</h2>
             </div>
 
-            <div class="form-group" style=" border-radius: 5px; border: ridge;padding:8px; width:106%; ">
-                <div class="form-group" style="margin-top: 1%">
-                    <div class="col-sm-3" style="float:left">
-                        <select class="form-control" >
-                            <option value="company_name">会社名</option>
-                            <option value="name">会社名担当者名</option>
-                            <option value="email">メールアドレス</option>
-                            <option value="phone_number">電話番号</option>
-                        </select>
-                    </div>
+            <div class="form-group" style=" border-radius: 5px; border: ridge;padding:8px; width: 100%; ">
+                <div class="form-group" style="margin-top: 1%;">
                     <div class="col-sm-7" style="float:left">
-                        <input type="text" class="form-control" id="keys" name="keys" placeholder="キーワードで検索" >
+                        <input type="text" class="form-control" id="keys" name="keys" v-model="keyword" placeholder="キーワードで検索" >
+                        
                     </div>
                     <div>
-                        <button class="btn btn-default" style="width: 100px;border-color: black">検索</button>
+                        <button class="btn btn-default" style="width: 100px;border-color: black" @click="search()">検索</button>
                     </div>
                 </div>
             </div>
@@ -68,6 +61,19 @@
         components: { UserRow },
         computed: {
             ...mapState(['users']),
+        },
+        data: function () {
+            return {
+                keyword: "",
+                optionSearch: "",
+            }
+        },
+        methods:{
+           search: function() {
+               this.$store.dispatch('search', {
+                    keyword: this.keyword,
+                });
+           }
         },
         created: function () {
             this.$store.dispatch('fetch');

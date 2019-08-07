@@ -13195,13 +13195,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -13209,6 +13202,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     UserRow: _UserRow__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['users'])),
+  data: function data() {
+    return {
+      keyword: ""
+    };
+  },
+  methods: {
+    search: function search() {
+      this.$store.dispatch('search', {
+        keyword: this.keyword
+      });
+    }
+  },
   created: function created() {
     this.$store.dispatch('fetch');
   }
@@ -50431,7 +50436,74 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1),
+    _c(
+      "div",
+      {
+        staticClass: "form-group",
+        staticStyle: {
+          "border-radius": "5px",
+          border: "ridge",
+          padding: "8px",
+          width: "100%"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "form-group", staticStyle: { "margin-top": "1%" } },
+          [
+            _c(
+              "div",
+              { staticClass: "col-sm-7", staticStyle: { float: "left" } },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.keyword,
+                      expression: "keyword"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "keys",
+                    name: "keys",
+                    placeholder: "キーワードで検索"
+                  },
+                  domProps: { value: _vm.keyword },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.keyword = $event.target.value
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  staticStyle: { width: "100px", "border-color": "black" },
+                  on: {
+                    click: function($event) {
+                      return _vm.search()
+                    }
+                  }
+                },
+                [_vm._v("検索")]
+              )
+            ])
+          ]
+        )
+      ]
+    ),
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
@@ -50452,10 +50524,10 @@ var render = function() {
     ),
     _c("br"),
     _vm._v(" "),
-    _vm._m(2),
+    _vm._m(1),
     _vm._v(" "),
     _c("table", { staticClass: "table table-hover" }, [
-      _vm._m(3),
+      _vm._m(2),
       _vm._v(" "),
       _c(
         "tbody",
@@ -50479,81 +50551,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "client" }, [
       _c("h2", [_vm._v("クラアント一覧")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "form-group",
-        staticStyle: {
-          "border-radius": "5px",
-          border: "ridge",
-          padding: "8px",
-          width: "106%"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "form-group", staticStyle: { "margin-top": "1%" } },
-          [
-            _c(
-              "div",
-              { staticClass: "col-sm-3", staticStyle: { float: "left" } },
-              [
-                _c("select", { staticClass: "form-control" }, [
-                  _c("option", { attrs: { value: "company_name" } }, [
-                    _vm._v("会社名")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "name" } }, [
-                    _vm._v("会社名担当者名")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "email" } }, [
-                    _vm._v("メールアドレス")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "phone_number" } }, [
-                    _vm._v("電話番号")
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-sm-7", staticStyle: { float: "left" } },
-              [
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "keys",
-                    name: "keys",
-                    placeholder: "キーワードで検索"
-                  }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  staticStyle: { width: "100px", "border-color": "black" }
-                },
-                [_vm._v("検索")]
-              )
-            ])
-          ]
-        )
-      ]
-    )
   },
   function() {
     var _vm = this
@@ -67351,6 +67348,14 @@ var usersStore = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
       }).then(function () {
         return _this3.dispatch('fetch');
       });
+    },
+    search: function search(_ref6, keyword) {
+      var commit = _ref6.commit;
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(_api__WEBPACK_IMPORTED_MODULE_3__["RESOURCE_USER"] + '/search', {
+        keyword: keyword
+      }).then(function (response) {
+        return commit('FETCH', response.data);
+      })["catch"]();
     }
   }
 });

@@ -58,7 +58,16 @@ const usersStore = new Vuex.Store ({
                 address2: user.address2
             })
             .then(() => this.dispatch('fetch'));
-        }
+        },
+        search({commit}, keyword) {
+            axios.post(RESOURCE_USER+'/search', {
+                keyword: keyword,
+               
+            })
+            .then(response => commit('FETCH', response.data))
+                .catch();
+        },
+
     }
 });
 
