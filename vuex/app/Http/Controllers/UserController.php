@@ -108,8 +108,20 @@ class UserController extends Controller
     }
 
     public function search(Request $request) {
-        $users = User::where('name',$request->keyword)->get();
+        $option = $request->optionSearch;
+        $users = User::where($option,'LIKE',"%$request->keyword%")->get();
         return response()
         ->json($users);
+       
+    }
+
+    public function login(Request $request) {
+        $user = User::where('email',$request->email)->where('password', $request->password)->first();
+        if(is_null($user)) {
+            return response()->json(["error"=>true]);
+        } else {
+            return response()->json(["error"=>false,"userLogin"=>$user]);
+        }
+        
     }
 }

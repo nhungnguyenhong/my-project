@@ -13,9 +13,15 @@
                 'csrfToken' => csrf_token(),
             ]) !!};
         </script>
+        <style>
+            body {
+                background-image:url(https://3.bp.blogspot.com/-3wbZ2WjLrOc/TvaJdoJoN1I/AAAAAAAADlo/tFbnHEaQwnY/s1600/background-Nice-background-pattern-017-1810-13.gif);
+            }
+        </style>
     </head>
     <body>
         <div id="app"></div>
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </body>
+    
 </html>

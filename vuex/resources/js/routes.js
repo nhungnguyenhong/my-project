@@ -1,7 +1,7 @@
 import CreateUser from '../js/components/CreateUser'
 import EditUser from '../js/components/EditUser'
 import UserList from '../js/components/UserList'
-
+import login from '../js/components/login'
 const routes = [
     {
         path: '/',
@@ -17,6 +17,11 @@ const routes = [
         path: '/users/edit/:id',
         component: EditUser,
         name: 'users.edit',
+    },
+    {
+        path: '/users/login',
+        component: login,
+        name: 'users.login',
     },
 ];
 export default routes;

@@ -3,6 +3,8 @@
 
 
 require('./bootstrap');
+import 'vue-toast-notification/dist/index.css';
+import 'vuejs-dialog/dist/vuejs-dialog.min.css';
 
 window.Vue = require('vue');
 
