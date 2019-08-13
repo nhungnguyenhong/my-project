@@ -21,7 +21,6 @@ const usersStore = new Vuex.Store ({
     },
   },
   actions: {
-      
     fetch({commit}) {
       return axios
         .get (RESOURCE_USER)

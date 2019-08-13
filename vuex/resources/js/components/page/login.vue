@@ -20,7 +20,7 @@
 import VeeValidate from "vee-validate";
 import { mapState, mapActions } from "vuex";
 import Vue from "vue";
-import TextInput from "./TextInput";
+import TextInput from "./common/TextInput";
 import axios from "axios";
 import { RESOURCE_USER } from "../api";
 import VueSession from "vue-session";

@@ -4,7 +4,7 @@
       <h2 style="margin-top: 5%; text-align:center">ご登録画面</h2>
       <p class="hint-text" style="text-align:center; color: green">アカウントを作成。無料でー分しかかかりません.</p>
       <div v-for="field in fieldInputs" v-bind:key="field.vModel">
-        <text-input :field="field" @updateField="updateValue"></text-input>
+        <text-input :field="field" @updateField="updateValue" ></text-input>
       </div>
       <div class="form-group row">
         <label for="number" class="col-sm-3 control-label text-md-left">お電話番号</label>
@@ -46,7 +46,7 @@
 <script>
 import VeeValidate from "vee-validate";
 import Vue from "vue";
-import TextInput from "./TextInput";
+import TextInput from "./common/TextInput";
 import VueToast from "vue-toast-notification";
 Vue.use(VeeValidate);
 Vue.use(VueToast);

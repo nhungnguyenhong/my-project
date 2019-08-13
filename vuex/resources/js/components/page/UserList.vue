@@ -39,9 +39,9 @@
 
 <script>
 import { mapState } from "vuex";
-import UserRow from "./UserRow";
-import TextSearch from "./TextSearch";
-import SelectInput from "./SelectInput";
+import UserRow from "./common/UserRow";
+import TextSearch from "./common/TextSearch";
+import SelectInput from "./common/SelectInput";
 import VueSession from "vue-session";
 export default {
   components: { SelectInput, TextSearch, UserRow },
